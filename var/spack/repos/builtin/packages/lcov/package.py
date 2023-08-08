@@ -24,5 +24,5 @@ class Lcov(MakefilePackage):
     depends_on("perl", type=("build", "run"))
 
     def install(self, spec, prefix):
-        perlPath = "LCOV_PERL_PATH={0}".format(self.spec["perl"].command.path)
-        make(perlPath, "DESTDIR=", "PREFIX=%s" % prefix, "install")
+        perlPath = f"LCOV_PERL_PATH={self.spec['perl'].command.path}"
+        make(perlPath, "DESTDIR=", f"PREFIX={prefix}", "install")
