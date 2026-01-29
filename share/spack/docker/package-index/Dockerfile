@@ -22,7 +22,7 @@ RUN $SPACK_ROOT/bin/spack list --format version_json > packages.json
 RUN $SPACK_ROOT/share/spack/docker/package-index/split.sh
 
 # nginx web service
-FROM nginx:mainline-alpine
+FROM nginx:1.29.4-alpine3.23
 MAINTAINER Spack Maintainers <maintainers@spack.io>
 COPY --from=build-env --chown=nginx:nginx /build/packages /build/packages.json /usr/share/nginx/html/api/
 COPY share/spack/docker/package-index/cors-header.conf /etc/nginx/conf.d/
